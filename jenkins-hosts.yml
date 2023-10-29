@@ -1,0 +1,28 @@
+- &hosts
+  - !host
+    id: Conjur-Demo
+    annotations:
+      description: Pipeline project
+      jenkins: true
+      authn-jwt/$CONJUR_AUTHENTICATOR_ID/jenkins_pronoun: Pipeline
+      authn-jwt/$CONJUR_AUTHENTICATOR_ID/identity: 266e991928f8c7cf155bd54d43d12174-Conjur-Demo
+      
+  - !host
+    id: Global-Project
+    annotations:
+      description: Freestyle project in Jenkins named Global-Project.
+      jenkins: true
+      authn-jwt/$CONJUR_AUTHENTICATOR_ID/jenkins_pronoun: Project
+      authn-jwt/$CONJUR_AUTHENTICATOR_ID/identity: 266e991928f8c7cf155bd54d43d12174-Global-Project
+  
+  - !host
+    id: Team-1
+    annotations:
+      description: Folder project
+      jenkins: true
+      authn-jwt/$CONJUR_AUTHENTICATOR_ID/identity: 266e991928f8c7cf155bd54d43d12174-Team-1
+
+# Group of hosts that can authenticate using the authn-azure authenticator
+- !grant
+  role: !group
+  members: *hosts

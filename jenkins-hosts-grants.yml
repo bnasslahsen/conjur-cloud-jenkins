@@ -1,0 +1,13 @@
+- !grant
+  role: !group jenkins-safe/delegation/consumers
+  member: !host /data/$APP_GROUP/Conjur-Demo
+
+- !permit
+  role: !host /data/$APP_GROUP/Global-Project
+  privileges: [ read, execute ]
+  resources:  [!variable bnl-ansible-safe/ansible-demo/password ]
+
+- !permit
+  role: !host /data/$APP_GROUP/Team-1
+  privileges: [ read, execute ]
+  resources: [ !variable ajh-demo/Database-MySQL-some-db-user/password ]

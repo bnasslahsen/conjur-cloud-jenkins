@@ -1,0 +1,7 @@
+# conjur policy update -f jenkins-branch.yml -b data
+- !policy
+  id: $APP_GROUP
+  annotations:
+    description: All jenkins policies
+  body:
+  - !group
